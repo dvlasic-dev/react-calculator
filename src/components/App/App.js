@@ -52,26 +52,34 @@ function App() {
         input.length === 1 ? 0 : String(input.slice(0, input.length - 1))
       );
     }
-    if (key == 'c') {
+    if (key === 'c') {
       setDisplay(0);
       setInput(0);
       setOperation(null);
     }
-    if (key === '+') {
-      setOperation(' + ');
-      setDisplay(Number(display) + Number(input));
-      setInput(0);
+    if (key === 'Enter') {
+      setOperation(null);
+      if (input !== 0 && operation !== null) {
+        setInput(0);
+        setDisplay(operators[operation.trim()](input, display));
+      }
     }
-    if (key === '*') {
-      setOperation(' * ');
-      if (input === 0 && display !== 0) {
-        setDisplay(display * display);
+    const operators = {
+      '+': (input, display) => Number(display) + Number(input),
+      '*': (input, display) => display * input,
+      '-': (input, display) => display - input,
+      '/': (input, display) => display / input
+    };
+    if (key in operators) {
+      setOperation(` ${key} `);
+      setInput(0);
+      if (input === 0 /* && ` ${key} ` === operation */) {
+        setDisplay(operators[key](display, display));
       } else {
         setDisplay(
-          display === 0 ? Number(input) : Number(display) * Number(input)
+          display === 0 ? Number(input) : operators[key](input, display)
         );
       }
-      setInput(0);
     }
   };
   useEffect(() => {
