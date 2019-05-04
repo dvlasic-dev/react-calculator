@@ -11,13 +11,6 @@ const Wrapper = styled.div`
     box-sizing: border-box;
   }
   display: flex;
-  background: linear-gradient(
-    180deg,
-    rgba(37, 36, 55, 1) 0%,
-    rgba(49, 48, 66, 1) 31%,
-    rgba(58, 58, 75, 1) 58%,
-    rgba(67, 74, 83, 1) 95%
-  );
 `;
 const Container = styled.section`
   display: flex;
@@ -30,6 +23,7 @@ const Container = styled.section`
 const Display = styled.div`
   display: flex;
   flex-direction: column;
+  height: 110px;
   color: white;
   justify-content: flex-end;
   margin-bottom: 20px;

@@ -12,3 +12,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+:root {
+  background: linear-gradient(
+    180deg,
+    rgba(37, 36, 55, 1) 0%,
+    rgba(49, 48, 66, 1) 31%,
+    rgba(58, 58, 75, 1) 58%,
+    rgba(67, 74, 83, 1) 95%
+  ) no-repeat;
+} 
