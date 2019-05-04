@@ -30,7 +30,7 @@ const DisplayNumbers = props => {
   return (
     <p ref={el} style={{ transform: `scale(${scale},${scale})` }}>
       {fixValue}
-      {props.operator ? props.operator : null}
+      {/* props.operator ? props.operator : null */}
     </p>
   );
 };
