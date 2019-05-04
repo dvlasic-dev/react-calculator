@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Backspace from './Backspace';
+import DisplayNumbers from '../DisplayNumbers/DisplayNumbers';
 import styled from 'styled-components';
 import { buttons } from '../../constants/';
 
@@ -30,13 +31,12 @@ const Display = styled.div`
   display: flex;
   flex-direction: column;
   color: white;
-  width: 100%;
   justify-content: flex-end;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   padding: 10px 10px 20px 10px;
-  overflow: hidden;
   p {
     align-self: flex-end;
+    transform-origin: right;
   }
   p:nth-child(1) {
     font-size: 30px;
@@ -157,26 +157,13 @@ function App() {
       document.removeEventListener('keydown', handleKeyDownAndClick);
     };
   });
-  const language = navigator.language || 'en-US';
+
   return (
     <Wrapper>
       <Container>
         <Display>
-          <p>
-            {/* display.toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ') */}
-            {parseFloat(display).toLocaleString(language, {
-              useGrouping: true,
-              maximumFractionDigits: 6
-            })}
-            {operation}
-          </p>
-          <p>
-            {/* input.toString().replace(/(?!^)(?=(?:\d{3})+(?:\.|$))/gm, ' ') */}
-            {parseFloat(input).toLocaleString(language, {
-              useGrouping: true,
-              maximumFractionDigits: 6
-            })}
-          </p>
+          <DisplayNumbers value={display} operator={operation} />
+          <DisplayNumbers value={input} />
         </Display>
         <ButtonsContainer>
           {buttons.map(item => {
