@@ -20,13 +20,16 @@ const DisplayNumbers = props => {
       changeScale(1);
     }
   });
+  let fixValue = parseFloat(props.value).toLocaleString(language, {
+    useGrouping: true,
+    maximumFractionDigits: 6
+  });
+  const match = props.value.toString().match(/\.\d*?(0*)$/);
+  if (match) fixValue += /[1-9]/.test(match[0]) ? match[1] : match[0];
 
   return (
     <p ref={el} style={{ transform: `scale(${scale},${scale})` }}>
-      {parseFloat(props.value).toLocaleString(language, {
-        useGrouping: true,
-        maximumFractionDigits: 6
-      })}
+      {fixValue}
       {props.operator ? props.operator : null}
     </p>
   );
