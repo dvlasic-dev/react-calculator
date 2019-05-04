@@ -12,7 +12,6 @@ const DisplayNumbers = props => {
     const availableWidth = parentNode.offsetWidth;
     const actualWidth = node.offsetWidth;
     const actualScale = availableWidth / actualWidth;
-
     if (scale === actualScale) return;
 
     if (actualScale < 1) {
